@@ -1,0 +1,39 @@
+
+.Like_container{
+    margin: 1%;
+}
+.List_div{
+    margin: 1%;
+    width:95%;
+    border: 1px solid black;
+}
+.thisList_title{
+    display: flex;
+    align-items: center;
+}
+.BackBTN{
+    cursor: pointer;
+}
+.Myclass{
+    margin: 1%;
+    display: flex;
+    gap: 15px;
+}
+.ClassDiv{
+     
+    width: 25%;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.ClassDiv:hover,.ClassTitle:hover{
+    cursor: pointer;
+}
+.ClassImg{
+    background-color: rgb(179, 179, 179);
+    width: 100%;
+    border-radius: 5px;
+}
+ 
+.ClassTitle{
+    margin: 1%;
+}

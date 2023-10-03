@@ -1,0 +1,78 @@
+.Addlist_container{
+    position: absolute;
+    background-color: rgb(139, 138, 138,0.3);
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    
+}
+.Addlist_box{
+    background-color: whitesmoke;
+    width: 90%;
+    text-align: center;
+    margin: auto;
+    border-radius: 5px;
+    position: relative;
+    top: 5%;
+    height: 90%;
+}
+.Addlist_nav{
+    display: flex;
+    border-bottom: 1px solid black;
+    align-items: center;
+
+}
+.Addlist_nav span{
+    width:97%;
+    text-align: left;
+    margin-left: 1%;
+}
+
+.Addlist_nav button{
+    border-radius: 0px 5px 0px 0px;
+    border: 0;
+    width:3%;
+     
+    background-color: rgb(208, 230, 255);
+}
+table{
+    border: 1px solid black;
+    border-collapse: collapse;
+     
+     
+}
+.tabletxt{
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: left;
+    padding-left: 2%;
+}
+.tableTitle{
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+     
+}
+.checkDiv{
+    justify-content: space-between;
+    /* align-items: center; */
+    margin: 1.5%;
+    display: flex;
+    flex-direction:row;
+     
+    
+ }
+ .song_Info{
+    width: 65%;
+    align-items:start;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+ }
+ .checkThumb{
+    border: 2px inset rgb(25, 0, 255);
+ }
+ .toList{
+    border: 1px solid black;
+ }

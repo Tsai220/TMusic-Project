@@ -1,0 +1,79 @@
+
+.container{
+    margin: 1%;
+}
+.search_box{
+    display: flex;
+}
+
+input[type="search"]{
+    width: 350px;
+    border: 2px solid black;
+    border-right: 0px;
+    border-radius:5px 0 0 5px  ;
+    height: 30px;
+    font-weight: 600;
+    max-width: 350px;
+}
+#searchInputBTN{
+    border: 2px solid black;
+    border-left: 1px solid rgb(165, 165, 165);
+    height: 30px;
+    border-radius:0 5px 5px 0;
+    background-color: rgb(226, 226, 226);
+}
+#searchInputBTN:hover{
+    cursor: pointer;
+}
+
+.search_resault{
+    margin-top: 1%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+}
+.video{
+     height: 90%;
+}
+.videoItem{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 320px;
+     
+    background-color: white;
+}
+.Video_samune{
+    border-radius: 5px;
+    box-shadow: 0px 1px 1px rgb(141, 141, 141);
+    height: 180px;
+    width: 320px;
+}
+
+.Video_link{
+    text-decoration: none;
+    font-weight: 600;
+    color: black;
+}
+.Video_title{
+    text-align: center;
+    margin: 0.5%;
+    font-size: medium;
+     
+}
+.list_tool{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+    height: 10%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+.addLike:hover{
+    fill: red;
+    cursor: pointer;
+}

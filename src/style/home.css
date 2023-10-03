@@ -1,0 +1,26 @@
+ 
+.container{
+    margin: 1%;
+     
+}
+
+.daily_hightLight{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 11px;
+    justify-content: center;
+     
+     
+}
+.dailyList{
+    
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 20%;
+     
+}
+.cd_cover{
+     
+}
+ 
