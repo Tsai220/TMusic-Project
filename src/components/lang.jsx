@@ -65,6 +65,13 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                 SearchTitle:"Explore",
                 SearchInput:"Search for music",
 
+                //加入歌單
+                AddlistTitle:'Add song to list',
+                AddlistTableTitle:'Song Name',
+                AddlistTableChannel:'Channel',
+                AddlistCreate:'Create list',
+                AddlistPlaceholder:'Please enter the name of list',
+
                 //音樂列表
                 ListMyClass:"My lists",
                 ListOftenSeeChannel:"Recent listening"
@@ -121,6 +128,14 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                 //尋找
                 SearchTitle:"尋找",
                 SearchInput:"尋找音樂",
+                
+
+                //加入歌單
+                AddlistTitle:'加入歌單',
+                AddlistTableTitle:'歌名',
+                AddlistTableChannel:'頻道',
+                AddlistCreate:'創建列表',
+                AddlistPlaceholder:'輸入音樂列表標題',
 
                 //播放列表
                 ListMyClass:"我的播放列表",
@@ -178,6 +193,13 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                 //尋找
                 SearchTitle:"探す",
                 SearchInput:"音楽を探す",
+
+                //加入歌單
+                AddlistTitle:'曲を追加する',
+                AddlistTableTitle:'曲名',
+                AddlistTableChannel:'チャンネル',
+                AddlistCreate:'リストを作成',
+                AddlistPlaceholder:'リストのタイトルを入力してください',
 
                 //播放列表
                 ListMyClass:"マイリスト",

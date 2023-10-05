@@ -163,7 +163,7 @@ const  Explore=()=>{
                 <input type="search" name="search" id="searchInput" placeholder={t('SearchInput')} onChange={searchChange}/>
                 <button type="submit" id="searchInputBTN" ><Search/></button>
             </form>
-            <button onClick={aaa}>000</button>
+            
            <div className="search_resault" >
                   
                 {showResault==true&&
@@ -190,6 +190,7 @@ const  Explore=()=>{
                                     AddListDiv(true)
                                     Change2Floate(re)}
                                     } height="80%" viewBox="0 -960 960 960" width="24" fill="" stroke=" " className="addLike"  ><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Z"/></svg>
+                            {/* 愛心 判斷是否該歌已加入清單 若有變紅愛心 */}
                             </div>
                         </div>
                     })

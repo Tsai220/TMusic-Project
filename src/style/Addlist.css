@@ -74,5 +74,20 @@ table{
     border: 2px inset rgb(25, 0, 255);
  }
  .toList{
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    width: 100%;
  }
+ .tableTitleCreate{
+    width: 20%;
+    text-align: center;
+    height: 2.5rem;
+ }
+ .createList{
+    text-align: left;
+    line-height: 50px;
+    
+ }
+ .ceateListinput  {
+     
+    border: 1px solid black;
+  }
