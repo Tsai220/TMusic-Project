@@ -10,23 +10,24 @@ import SideNav from "./Layout/SideNav";
 import List from "../pages/List";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
-import jwtDecode from "jwt-decode";
 import { useListenForState } from "./Context";
+
 const Layout=()=>{
     
     const {t}=useTranslation()
-    const {AccessToken,setAccessToken,login,IsLogin}=useListenForState()
- 
-    const SaveAccesssToken=localStorage.getItem('access') 
+    const {chooseV,AccessToken,setAccessToken,login,IsLogin,userNick,SetUserNick}=useListenForState()
     console.log(AccessToken)
+    const SaveAccesssToken=localStorage.getItem('access') //可能導致錯誤
+     
     useEffect(()=>{
         
         if(SaveAccesssToken){
             setAccessToken(SaveAccesssToken)
-            console.log(AccessToken,"asdasdwqqw")
-             
-            axios.post("http://127.0.0.1:8000/api/token/verify/",{
-                "token": SaveAccesssToken
+           
+            // "http://127.0.0.1:8000/api/token/verify/"
+            axios.post("http://127.0.0.1:8000/user/api/auth",{
+                "token": SaveAccesssToken,
+                'rToken':localStorage.getItem("refresh")
             },{headers: {
                 
                 "Content-Type": "application/json",
@@ -34,31 +35,38 @@ const Layout=()=>{
                  
                 }})
             .then(response=>{
+                console.log(response,"qwdwq")
                 if(response.statusText="OK"){
+                    SetUserNick(response.data)
                     IsLogin(true)
+                    
                 }
-                console.log( response ,"success" )
+                 
             }).catch(err=>{
                 //沒傳AccessToken出去? SaveAccesssToken有
-                
+                 
                 if(err.response.statusText="Unauthorized"){
                     console.log("Token Expired")
                     IsLogin(false)
                     axios.post("http://127.0.0.1:8000/api/token/refresh/",{"refresh":localStorage.getItem('refresh')  })
                     .then(response=>{
+                        console.log(response)
                         console.log(response.data.access,"新token")
                         localStorage.setItem("access",response.data.access)
                         setAccessToken(response.data.access)
+                        SetUserNick(response.data)
                         IsLogin(true)
                     })
                     .catch(error=>{
                         localStorage.removeItem("access")
                         localStorage.removeItem("refresh")
                         console.log(error,"新token失敗 refresh也失效?")
+                         
                         IsLogin(false)
                     })
                 }else{
                     console.log("no login")
+                     
                     IsLogin(false)
                 }
                 
@@ -67,6 +75,8 @@ const Layout=()=>{
         
          
     },[])
+
+    console.log(userNick)
     return(
         <>
          
@@ -83,7 +93,7 @@ const Layout=()=>{
                     </div>
                     <div className="top_nav_right">
                         {login && <>
-                            <p>a</p>
+                            <p>{userNick}</p>
                         </>
                             
                         || !login &&<>
@@ -111,9 +121,11 @@ const Layout=()=>{
 
                 <div className="login-play_nav">
                     <h1>000000000000</h1>
+                     
                 </div>
                 
             </div>
+           
              
         </>
     )

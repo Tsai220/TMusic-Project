@@ -10,6 +10,7 @@ function ListenForStateProvider({children}){
     const [searchFor,SetSearchFor]=useState(null)
     const [KeyWordList,SetKeyWordList]=useState([],[],[])
     const [ListMusicCheck,SetListMusicCheck]=useState([])//交叉比對關鍵字
+    
     const [chooseV,SetchooseV]=useState({
         videoId:null,
         videoLink:null,
@@ -31,12 +32,15 @@ function ListenForStateProvider({children}){
         //驗證
     // }
     const [list,AddListDiv]=useState(false)
+    const [userNick,SetUserNick]=useState(null)
+    const [P_musicList,Set_P_musicList]=useState([])
+    const [mylist,SetMylist]=useState([])
     const {t}=useTranslation();
      
    
 
     return <>
-        <ListenForState.Provider value={{navPage,SetnavPage,TopNavChange,SetTopNavChange,FrameOpen,IsFrameOpen,chooseV,SetchooseV,searchFor,SetSearchFor ,KeyWordList,SetKeyWordList,ListMusicCheck,SetListMusicCheck,Inlist,Setlist,ChooseClass,IsChooseClass,AccessToken,setAccessToken,login,IsLogin,list,AddListDiv}}>
+        <ListenForState.Provider value={{navPage,SetnavPage,TopNavChange,SetTopNavChange,FrameOpen,IsFrameOpen,chooseV,SetchooseV,searchFor,SetSearchFor ,KeyWordList,SetKeyWordList,ListMusicCheck,SetListMusicCheck,Inlist,Setlist,ChooseClass,IsChooseClass,AccessToken,setAccessToken,login,IsLogin,list,AddListDiv,userNick,SetUserNick,P_musicList,Set_P_musicList,mylist,SetMylist}}>
             {children}
         </ListenForState.Provider>
     </>

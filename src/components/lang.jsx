@@ -12,6 +12,9 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
     resources:{
         en:{
             translation:{
+                //登入狀態
+                IsLogin:'Not logging',
+
                 //分頁標籤
                 pageTitle:'TMusic- Enjoy music anytime',
 
@@ -71,7 +74,8 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                 AddlistTableChannel:'Channel',
                 AddlistCreate:'Create list',
                 AddlistPlaceholder:'Please enter the name of list',
-
+                AddlistErrMsg:"Typing the words under 10",
+                AddlistChooseLabel:"Select list",
                 //音樂列表
                 ListMyClass:"My lists",
                 ListOftenSeeChannel:"Recent listening"
@@ -80,6 +84,8 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
         },
         zh:{
             translation:{
+                //登入狀態
+                IsLogin:'未登入',
                 //分頁標籤
                 pageTitle:'TMusic- 隨時享受音樂',
                 // 主頁 兼 Layout
@@ -136,6 +142,8 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                 AddlistTableChannel:'頻道',
                 AddlistCreate:'創建列表',
                 AddlistPlaceholder:'輸入音樂列表標題',
+                AddlistErrMsg:"請輸入10字以內的標題",
+                AddlistChooseLabel:"請選擇列表",
 
                 //播放列表
                 ListMyClass:"我的播放列表",
@@ -144,6 +152,8 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
         },
         ja:{
             translation:{
+                //登入狀態
+                IsLogin:'サインインしていません',
                 //分頁標籤
                 pageTitle:'TMusic- いつでも音楽を楽しむ',
                 // 主頁 兼 Layout
@@ -200,7 +210,8 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                 AddlistTableChannel:'チャンネル',
                 AddlistCreate:'リストを作成',
                 AddlistPlaceholder:'リストのタイトルを入力してください',
-
+                AddlistErrMsg:"タイトルは10桁以内の文字でございます",
+                AddlistChooseLabel:"リストを選んで",
                 //播放列表
                 ListMyClass:"マイリスト",
                 ListOftenSeeChannel:"最近聴いた"

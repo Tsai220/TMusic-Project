@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next"
 import logo from '../images/logo.png'
-import {redirect } from "react-router-dom"
+import { Link ,useNavigate} from "react-router-dom"
+
 import { TextField ,FormHelperText} from "@mui/material"
 import axios from "axios"
 import { useState } from "react"
@@ -9,13 +10,13 @@ import Home from "./home"
 import { useListenForState } from "../components/Context"
 
 const Login=()=>{
-    const {AccessToken,setAccessToken}=useListenForState()
+    const {AccessToken,setAccessToken,userNick,SetUserNick}=useListenForState()
     const {t}=useTranslation()
     const [user,Setuser]=useState({
         email:null,
         password:null
     })
-    const [loginState,IsLogin]=useState(false)
+     
     const [errorOutput,SeterrorOutput]=useState([null,null])
     const saveErr_msg = [null, null]
     const errMSG=[t('LoginErrMsg0'),t('LoginErrMsg1')]
@@ -27,7 +28,7 @@ const Login=()=>{
             [e.target.name]:e.target.value 
         }))
     }
-
+    const navigate=useNavigate()
     let emailReg=new RegExp(/^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/,"g")
     let passwdReg=new RegExp(/^[a-zA-Z]\w{4,10}$/,"g")
     const Reg=[emailReg,passwdReg]
@@ -65,31 +66,37 @@ const Login=()=>{
     }
 
     
-
-   function loginConn(formData){
- 
+     
+   const loginConn=(formData)=>{
+        setAccessToken(null)
             axios.post('http://127.0.0.1:8000/user/api/Login',formData  )
-                .then(function(response){
+                .then(response=>{
                     console.log(response)
-                    if(response.status=200){
+                    if(response.status==200){
                         console.log("成功")
+
+                        
                         localStorage.setItem("access",response.data.access)
                         localStorage.setItem("refresh",response.data.refresh)
+                        SetUserNick( response.data.username)
                         setAccessToken(response.data.access)
-                        window.location.href="http://localhost:5173/"
-                    }else if(response.status=401){
-                        console.log("no")
-                        IsLogin(false)
-                    }
+                         
+                        console.log(AccessToken)
+
+                        
+                        navigate("/") // window.location.href 會轉跳到未更新的狀態
+                     
                     
-                }).catch(function(error){
-                    console.log(error)
-                    IsLogin(false)
+                }})
+                .catch(error=>{
+                    console.log(error,"401")
+                     
+                     
                 })
     }
-
+ 
+     
     return <>
-         
         <div className="login_container">
             <a href="/"><img id="img_logo" src={logo} width={"150px"} alt="" /></a>
             <h2>{t('LoginTitle')}</h2>

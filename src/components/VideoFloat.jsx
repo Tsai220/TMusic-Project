@@ -15,7 +15,7 @@ const VideoFloat=(props )=>{
     const [restart,IsRestart]=useState(false)
     const playerRef=useRef(null)
      
-     
+    console.log(chooseV,"asdaw")
 
     const CloseBtn=()=>{{
         IsFrameOpen(false)

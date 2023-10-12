@@ -47,17 +47,19 @@ table{
     border-collapse: collapse;
     text-align: left;
     padding-left: 2%;
+    font-size: 1rem;
 }
 .tableTitle{
     border: 1px solid black;
     border-collapse: collapse;
     text-align: center;
+    font-size: 1rem;
      
 }
 .checkDiv{
     justify-content: space-between;
     /* align-items: center; */
-    margin: 1.5%;
+     
     display: flex;
     flex-direction:row;
      
@@ -69,13 +71,25 @@ table{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 1%;
+    font-size: 0.5rem;
+ }
+ .Video_Thumbnails{
+     width: 35%;
+     padding: 1% 0 1% 1%;
+ }
+ .noLoginTxt{
+    font-size: 2rem;
  }
  .checkThumb{
-    border: 2px inset rgb(25, 0, 255);
+    
+    /* border: 2px inset rgb(25, 0, 255); */
  }
+ 
  .toList{
     /* border: 1px solid black; */
-    width: 100%;
+    
+    padding: 1%;
  }
  .tableTitleCreate{
     width: 20%;
@@ -88,6 +102,10 @@ table{
     
  }
  .ceateListinput  {
-     
+    width: 50%;
+    margin-left: 1%;
     border: 1px solid black;
+  }
+  .addListBtn:hover{
+    cursor: pointer;
   }

@@ -9,7 +9,7 @@ import VideoFloat from "../components/VideoFloat"
 import { useListenForState } from "../components/Context"
 import he from 'he'
 import Addlist from "../components/AddList"
-
+import PlaylistAdd from "@mui/icons-material/PlaylistAdd"
 const  Explore=()=>{
     const {t}=useTranslation();
      
@@ -132,7 +132,7 @@ const  Explore=()=>{
         KeyWordList[2]=ListMusicCheck
         
         
-        console.log(element,GetVideoTime)
+        
     }
     function aaa(){
         const aaaw=({
@@ -176,6 +176,7 @@ const  Explore=()=>{
                                  IsFrameOpen(a=>!FrameOpen) 
                                  Change2Floate(re)}
                                  }>
+                                 
                                 <img  className="Video_samune" src={re.VideoThumbnails}  />
                                 
                                 <div className="Video_title">
@@ -186,11 +187,11 @@ const  Explore=()=>{
                                 </div>
                             </div>
                             <div className="list_tool">
-                                <svg xmlns="http://www.w3.org/2000/svg" onClick={e=>{
+                                <PlaylistAdd onClick={e=>{
                                     AddListDiv(true)
                                     Change2Floate(re)}
-                                    } height="80%" viewBox="0 -960 960 960" width="24" fill="" stroke=" " className="addLike"  ><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Z"/></svg>
-                            {/* 愛心 判斷是否該歌已加入清單 若有變紅愛心 */}
+                                    } className="addLike"  />
+                            
                             </div>
                         </div>
                     })
