@@ -22,9 +22,7 @@ function ListenForStateProvider({children}){
         VideoDescribe:null,
         VideoTime:null
     })
-    const [Inlist,Setlist]=useState({
-        classTitle:null
-    })
+    const [Inlist,Setlist]=useState({})
     const [ChooseClass,IsChooseClass]=useState(true)
     const [login,IsLogin]=useState(false)
     const SaveAccesssToken=localStorage.getItem('access') 

@@ -17,7 +17,7 @@ const Layout=()=>{
     const {t}=useTranslation()
     const {chooseV,AccessToken,setAccessToken,login,IsLogin,userNick,SetUserNick}=useListenForState()
     console.log(AccessToken)
-    const SaveAccesssToken=localStorage.getItem('access') //可能導致錯誤
+    let SaveAccesssToken=localStorage.getItem('access') //可能導致錯誤
      
     useEffect(()=>{
         
@@ -31,7 +31,7 @@ const Layout=()=>{
             },{headers: {
                 
                 "Content-Type": "application/json",
-                'Authorization': `Bearer ${AccessToken}`,
+                'Authorization': `Bearer ${localStorage.getItem('access')}`,
                  
                 }})
             .then(response=>{
@@ -75,11 +75,10 @@ const Layout=()=>{
         
          
     },[])
-
-    console.log(userNick)
+    console.log(login,"登入狀態")
+     
     return(
         <>
-         
             <div className="nav">
                 <div className="side_nav">
                     <SideNav />
@@ -120,7 +119,7 @@ const Layout=()=>{
                 
 
                 <div className="login-play_nav">
-                    <h1>000000000000</h1>
+                    <h1>Sample Layout</h1>
                      
                 </div>
                 

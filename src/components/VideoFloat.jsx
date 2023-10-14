@@ -7,7 +7,7 @@ import KeywordComparison from "./lyrics"
 import axios from "axios"
  
 const VideoFloat=(props )=>{
-    const {FrameOpen,IsFrameOpen,chooseV,SetchooseV,searchFor,SetSearchFor }=useListenForState()
+    const {FrameOpen,IsFrameOpen,chooseV,SetchooseV,searchFor,SetSearchFor ,KeyWordList,SetKeyWordList}=useListenForState()
     const [loop,IsLoop]=useState(0)
     const [muted,Ismute]=useState(false)
     const [volume,SetVolume]=useState(10)
@@ -175,7 +175,7 @@ const VideoFloat=(props )=>{
                     <div className="video_frame">
                         <div id="player_container" >
                             <YouTube 
-                                videoId={chooseV.videoId} 
+                                videoId={chooseV.videoId } 
                                 opts={opts}
                                 iframeClassName="react-player" 
                                 ref={playerRef}
@@ -194,7 +194,7 @@ const VideoFloat=(props )=>{
                                 傳入歌詞
                                 目前誰唱的
                                 將搜索欄的詞和結果影片和浮動視窗的物件詞，然後比對是哪首歌
-                                <KeywordComparison />
+                                {/* <KeywordComparison /> */}
                             </div>
                         </div>
                     </div>

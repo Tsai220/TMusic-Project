@@ -107,14 +107,7 @@ const  Explore=()=>{
     }
     
     const Change2Floate=(element)=>{
-        //IsFrameOpen(a=>!FrameOpen) //true時!FrameOpen變false , false時!FrameOpen變true
-
-        // let GetVideoTime=""
-        // axios.post(`https://www.googleapis.com/youtube/v3/videos?id=${element.videoId}&key=${APIkey}&part=contentDetails`)
-        // .then(response=>{
-        //     console.log(response,"8787aa")
-        //     //GetVideoTime=response.contentDetails.duration
-        // }).catch(err=>{console.log(err,"0122213")})
+ 
         SetchooseV({//再把該物件傳到context
             videoId:element.videoId,
             videoLink: element.videoLink,
@@ -169,7 +162,7 @@ const  Explore=()=>{
                 {showResault==true&&
                     
                     searchResault.map((re)=>{ //re為查到的物件
-                        console.log(re)
+                        // console.log(re)
                         let key=v4()
                         return <div key={key} className="videoItem" >
                             <div className="video" onClick={e=>{

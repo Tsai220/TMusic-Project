@@ -83,8 +83,8 @@ const Login=()=>{
                          
                         console.log(AccessToken)
 
-                        
-                        navigate("/") // window.location.href 會轉跳到未更新的狀態
+                        window.location.href="/"
+                        //navigate("/") // window.location.href 會轉跳到未更新的狀態
                      
                     
                 }})

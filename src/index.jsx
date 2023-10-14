@@ -23,7 +23,7 @@ const App=()=>{
             <BrowserRouter >
                 <Routes>
                     {/* Layout內使用組件套用版型除了下面2個在之外的 */}
-                    <Route path="/*" element={<Layout/>}></Route> 
+                    <Route path="/*" element={<Layout/>}/>
                     <Route path="/SignUp" element={<Signup  />}/>
                     <Route path="/Login" element={<Login  />}/>
                      

@@ -37,3 +37,30 @@
 .ClassTitle{
     margin: 1%;
 }
+.item{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+     
+    border-bottom: 1px solid gray;
+    
+}
+.item:hover,.musicTitle:hover,.musicchannel_name:hover{
+    cursor: pointer;
+}
+.item_info{
+    display: flex;
+    flex-direction: column;
+}
+.musicThumb{
+    width: 10%;
+    padding: 1%;
+}
+.musicTitle{
+    text-align: left;
+    font-weight: 600;
+}
+.musicchannel_name{
+    
+}

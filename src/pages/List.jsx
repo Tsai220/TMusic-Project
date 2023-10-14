@@ -11,13 +11,7 @@ const List=()=>{
     const {t}=useTranslation()
     const {ChooseClass,IsChooseClass,Inlist,Setlist,login,mylist,SetMylist}=useListenForState()
      const [show,Isshow]=useState(false)
-    const Myclass=[{
-        classImg:"",
-        classTitle:"播放列表1"
-    },{
-        classImg:"",
-        classTitle:"播放列表2"
-    }]
+     
     let lists=[{}]
     useEffect(()=>{
         //返回用戶有哪些音樂列表
@@ -46,8 +40,14 @@ const List=()=>{
     },[])
     
     function toMyList(list){
+        console.log(list)
         IsChooseClass(false)
-        Inlist.classTitle=list.classTitle
+        Setlist({
+            "listName":list.listName,
+            "listId":list.listId
+        })
+        Inlist.listName=list.listName
+        Inlist.listId=list.listId
     }
 
 
@@ -74,6 +74,7 @@ const List=()=>{
                                     </div>
                                 })
                             }
+                            
                         </>
                     ||!show&&<>
                         wait...
@@ -81,7 +82,7 @@ const List=()=>{
                     }
 
                 </div>
-                
+                <h3>{t('ListOftenSeeChannel')}</h3>
                 {/* 取搜尋常點進的影片的頻道主 */}
             </>
             || !ChooseClass &&
@@ -96,7 +97,7 @@ const List=()=>{
         
     
     } 
-        <h3>{t('ListOftenSeeChannel')}</h3>
+       
     </div>
 }
 export default List
