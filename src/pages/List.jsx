@@ -9,7 +9,7 @@ import axios from "axios"
  
 const List=()=>{
     const {t}=useTranslation()
-    const {ChooseClass,IsChooseClass,Inlist,Setlist,login,mylist,SetMylist}=useListenForState()
+    const {ChooseClass,IsChooseClass,Inlist,Setlist,login,IsLogin,mylist,SetMylist}=useListenForState()
      const [show,Isshow]=useState(false)
      
     let lists=[{}]
@@ -18,11 +18,13 @@ const List=()=>{
         
         axios.post("http://127.0.0.1:8000/user/mylist/ShowList",{rToken:localStorage.getItem("refresh")})
         .then(response=>{
- 
+            console.log("aaaa")
             lists=[]
  
             response.data.forEach(val=>{
-                
+                if(val.listThumb==null){
+                    val.listThumb="../src/images/music-playlist-icon-vector-33740985.jpg"
+                }
                 lists.push({
                     listId:val.listId,
                     listName:val.listName,
@@ -36,6 +38,8 @@ const List=()=>{
             console.log(lists)
             SetMylist(lists)
             Isshow(true)
+        }).catch(err=>{
+            IsLogin(false)
         })
     },[])
     
@@ -68,8 +72,13 @@ const List=()=>{
                                 mylist.map((list)=>{
                                     
                                     return<div key={v4()} className="ClassDiv" onClick={e=>toMyList(list)}>
-                                        <img src={ClassImg}   className="ClassImg" alt="" />
-                                        <label className="ClassTitle">{list.listName}</label>
+                                        <div className="imgDiv">
+                                            <img src={list.listThumb}   className="ClassImg" alt="" />
+                                        </div>
+                                        <div className="titleDiv">
+                                            <label className="ClassTitle">{list.listName}</label>
+
+                                        </div>
 
                                     </div>
                                 })

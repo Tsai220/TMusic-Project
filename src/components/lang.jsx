@@ -76,6 +76,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                 AddlistPlaceholder:'Please enter the name of list',
                 AddlistErrMsg:"Typing the words under 10",
                 AddlistChooseLabel:"Select list",
+                AddlistUplimit:"The list has reached the limit",
                 //音樂列表
                 ListMyClass:"My lists",
                 ListOftenSeeChannel:"Recent listening"
@@ -144,6 +145,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                 AddlistPlaceholder:'輸入音樂列表標題',
                 AddlistErrMsg:"請輸入10字以內的標題",
                 AddlistChooseLabel:"請選擇列表",
+                AddlistUplimit:"創建播放清單數量上限!",
 
                 //播放列表
                 ListMyClass:"我的播放列表",
@@ -212,6 +214,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                 AddlistPlaceholder:'リストのタイトルを入力してください',
                 AddlistErrMsg:"タイトルは10桁以内の文字でございます",
                 AddlistChooseLabel:"リストを選んで",
+                AddlistUplimit:"リストが制限に達しました!",
                 //播放列表
                 ListMyClass:"マイリスト",
                 ListOftenSeeChannel:"最近聴いた"

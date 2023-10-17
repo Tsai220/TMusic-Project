@@ -1,23 +1,26 @@
 import axios, { Axios } from "axios"
 import "../style/Addlist.css"
+
 import { FormControl, FormHelperText, IconButton, TextField } from "@mui/material"
 import { useListenForState } from "./Context"
 import { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 import OutlinedInput from '@mui/material/OutlinedInput';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
-import { InputLabel } from '@mui/material';
-import { NativeSelect } from '@mui/material';
+import { InputLabel , NativeSelect} from '@mui/material';
+ 
 import { v4 } from "uuid"
+
  
 const Addlist=()=>{
+    const {t}=useTranslation()
     const {chooseV,SetchooseV,list,AddListDiv,login,IsLogin,P_musicList,Set_P_musicList}=useListenForState()
     const [addlist,Isaddlist]=useState(false)
     const [listName,SetListName]=useState("")
     const [selected,SetSelected]=useState()
     const [hasAdd,IshasAdd]=useState(false)
     const [listLen,setListLen]=useState(true)
-    const {t}=useTranslation()
+    
     function closeBtn(){
         AddListDiv(false)
     }
@@ -35,6 +38,7 @@ const Addlist=()=>{
             }
         }).catch(err=>{
             console.log("herer")
+            IsLogin(false)
             Isaddlist(true)
         })
         
@@ -281,8 +285,8 @@ const Addlist=()=>{
                             
                             </>
                             || !listLen && <>
-                                
-                                創建播放清單數量上限!
+                                {t('AddlistUplimit')}
+                         
                                 
                             </>
                             }
