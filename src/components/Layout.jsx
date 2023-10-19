@@ -90,7 +90,7 @@ const Layout=()=>{
                          <TopNav/>
                          
                     </div>
-                    <div className="top_nav_right">
+                    <div className="top_nav_right" >
                         {login && <>
                             <p>{userNick}</p>
                         </>

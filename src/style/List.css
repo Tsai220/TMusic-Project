@@ -54,34 +54,50 @@
     width: 100%;
  }
 .ClassTitle{
-    font-size: 0.9rem;
+     
     font-weight: 600;
     margin: 1%;
 }
 .item{
     display: flex;
-    flex-direction: row;
-    width: 100%;
     align-items: center;
-     
     border-bottom: 1px solid gray;
     
 }
-.item:hover,.musicTitle:hover,.musicchannel_name:hover{
+.item:hover{
+    /* background-color: rgb(238, 238, 238); */
+}
+.itemBlock{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.musicThumb:hover,.musicTitle:hover,.musicchannel_name:hover ,.itemBlock:hover{
     cursor: pointer;
+    
 }
 .item_info{
     display: flex;
     flex-direction: column;
+    width: 90%;
+    font-size: 1rem;
+}
+.itemOpt{
+    width: 5%;
+}
+.itemOpt:hover{
+    cursor: pointer;
+    color: rgb(255, 255, 255);
 }
 .musicThumb{
-    width: 10%;
+    width: 12%;
     padding: 1%;
 }
 .musicTitle{
     text-align: left;
     font-weight: 600;
 }
+
 .musicchannel_name{
     
 }

@@ -7,7 +7,8 @@ import { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 import OutlinedInput from '@mui/material/OutlinedInput';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
-import { InputLabel , NativeSelect} from '@mui/material';
+import { InputLabel , NativeSelect,MenuItem,Select} from '@mui/material';
+ 
  
 import { v4 } from "uuid"
 
@@ -17,9 +18,10 @@ const Addlist=()=>{
     const {chooseV,SetchooseV,list,AddListDiv,login,IsLogin,P_musicList,Set_P_musicList}=useListenForState()
     const [addlist,Isaddlist]=useState(false)
     const [listName,SetListName]=useState("")
-    const [selected,SetSelected]=useState()
+    const [selected,SetSelected]=useState('')
     const [hasAdd,IshasAdd]=useState(false)
     const [listLen,setListLen]=useState(true)
+   
     
     function closeBtn(){
         AddListDiv(false)
@@ -44,6 +46,8 @@ const Addlist=()=>{
         
     },[])
     let Mylist=null
+
+    
     useEffect(()=>{
         if(addlist==false){
             console.log("重複檢查")
@@ -63,13 +67,14 @@ const Addlist=()=>{
                         }
                         Mylist.push(pushData)
                     });
-                    console.log(Mylist.length,"輸入")
+      
                     Set_P_musicList(Mylist)
                     SetSelected(Mylist[0].list_id)
-                    console.log(selected)
+                     
                     if(Mylist.length ==3){
                         setListLen(false)
                     }
+                     
                 }
                 
                 console.log(response)
@@ -142,8 +147,13 @@ const Addlist=()=>{
             
     }
     
+    function selectClick(val){
+        SetSelected(val.target.value)
+         
+    }
     let errMsg=null
     const [titleErr,IstitleErr]=useState(false)
+     
     return <div className="Addlist_container">
         <div className="Addlist_box">
             <div className="Addlist_nav">
@@ -219,24 +229,20 @@ const Addlist=()=>{
                         </div>
                     || !addlist && <>
                         <FormControl  sx={{width:"90%"}}>
-                            <InputLabel variant="standard" htmlFor="Mylist_select" disableAnimation={true} shrink={true} >{t('AddlistChooseLabel')}</InputLabel>
-                            
-                            <NativeSelect  defaultValue={P_musicList[0]} inputProps={{id:'Mylist_select', name:'Mylist'}}  onChange={(a)=>{
-                                SetSelected(a.target.value)
-
-                                }} >
+                            <InputLabel id="Mylist_select" >{t('AddlistChooseLabel')}</InputLabel>
+                          
+                            <Select label={t('AddlistChooseLabel')} labelId="Mylist_select" inputProps={{id:'Mylist_select',name:'Mylist'}} value={selected} defaultValue={P_musicList[0]}  onChange={selectClick}  >
+                                    
                                     {
-                                        
                                         P_musicList.map((element)=>{
                                             
-                                            return <option  key={v4()}    value={element.list_id} >{element.list_name}</option> 
-                                                
-                                            
-                                        
+                                            return <MenuItem  key={v4()} value={element.list_id} >{element.list_name}</MenuItem >
+                                             
+
                                         })
                                     }
 
-                            </NativeSelect>
+                            </Select>
                             
                         </FormControl>
                         <IconButton color="primary" aria-label="add to list" sx={{ textAlign:'center' }} onClick={AddtoMylist} >

@@ -79,7 +79,9 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                 AddlistUplimit:"The list has reached the limit",
                 //音樂列表
                 ListMyClass:"My lists",
-                ListOftenSeeChannel:"Recent listening"
+                ListOftenSeeChannel:"Recent listening",
+                ListDelte:"Delete",
+                ListShare:'Share',
                  
             }
         },
@@ -149,7 +151,9 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
 
                 //播放列表
                 ListMyClass:"我的播放列表",
-                ListOftenSeeChannel:"最近收聽"
+                ListOftenSeeChannel:"最近收聽",
+                ListDelte:"刪除",
+                ListShare:'分享',
             }
         },
         ja:{
@@ -217,7 +221,9 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                 AddlistUplimit:"リストが制限に達しました!",
                 //播放列表
                 ListMyClass:"マイリスト",
-                ListOftenSeeChannel:"最近聴いた"
+                ListOftenSeeChannel:"最近聴いた",
+                ListDelte:"削除",
+                ListShare:'共有',
             }
         },
     }
