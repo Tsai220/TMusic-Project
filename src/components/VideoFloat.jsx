@@ -186,6 +186,7 @@ const VideoFloat=(props )=>{
                                 onPlaybackRateChange={VideoSpeed}
                                 
                                 
+                                
                             />
                         </div>
                         

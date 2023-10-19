@@ -169,7 +169,7 @@ const MyList=(list)=>{
                                   }}
                                   sx={{alignItems:"center",width:"30%" }}
                                 >
-                                 <MenuList>
+                                 <MenuList sx={{alignItems:'center',justifyItems:"center"}}>
                                     <MenuItem sx={{borderBottom:1, borderColor:'grey'}}>
                                         <ListItemIcon>
                                             <FeedOutlinedIcon     sx={{color:"black"}} />

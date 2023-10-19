@@ -6,8 +6,8 @@ import { useEffect, useState } from "react"
 import MyList from "../components/MyList"
 import { useListenForState } from "../components/Context"
 import axios from "axios"
- 
-const List=()=>{
+import { Skeleton } from "@mui/material"
+const List=(props)=>{
     const {t}=useTranslation()
     const {ChooseClass,IsChooseClass,Inlist,Setlist,login,IsLogin,mylist,SetMylist}=useListenForState()
      const [show,Isshow]=useState(false)
@@ -54,7 +54,7 @@ const List=()=>{
         Inlist.listId=list.listId
     }
 
-
+    const { loading = false } = props
     return <div className="Like_container">
     {/* 若無喜愛名單或未登入 不顯示 */}
     {/* 先選播放清單-> 列出喜愛列表 */}
@@ -68,7 +68,8 @@ const List=()=>{
                     
                     {show &&<>
                             
-                            {   
+                            {/* {   
+                            
                                 mylist.map((list)=>{
                                     
                                     return<div key={v4()} className="ClassDiv" onClick={e=>toMyList(list)}>
@@ -77,12 +78,51 @@ const List=()=>{
                                         </div>
                                         <div className="titleDiv">
                                             <label className="ClassTitle">{list.listName}</label>
+                                            
 
                                         </div>
 
                                     </div>
                                 })
-                            }
+                            } */}
+                            {   
+                            
+                            mylist.map((list)=>{
+                                
+                                return <>
+                                    
+                                        {
+                                            
+                                                list ? (
+                                                    <div key={v4()} className="ClassDiv" onClick={e=>toMyList(list)}>
+                                                        <div className="imgDiv">
+                                                            {loading ? <Skeleton animation="wave"  ><img src={list.listThumb}   className="ClassImg"/></Skeleton>:
+                                                                    
+                                                                    <img src={list.listThumb}   className="ClassImg" style={{opacity:"0.7"}} />  
+                                                                    // 有骨架
+                                                            }
+                                                            
+                                                            
+                                                        </div>
+                                                        <div className="titleDiv">
+                                                            <label className="ClassTitle">{list.listName}</label>
+                                                        </div>
+
+                                                    </div>
+                                                ) : (
+                                                    <Skeleton animation="wave" className="ClassImg" variant="rectangular"  />
+                                                )
+                                            
+                                        }
+                                          
+                                    </>
+                                     
+                                
+                                 
+                            })
+                        }
+
+
                             
                         </>
                     ||!show&&<>
