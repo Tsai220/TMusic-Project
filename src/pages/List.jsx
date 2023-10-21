@@ -96,9 +96,9 @@ const List=(props)=>{
                                                 list ? (
                                                     <div key={v4()} className="ClassDiv" onClick={e=>toMyList(list)}>
                                                         <div className="imgDiv">
-                                                            {loading ? <Skeleton animation="wave"  ><img src={list.listThumb}   className="ClassImg"/></Skeleton>:
+                                                            {loading ?<Skeleton animation="wave"  ><img src={list.listThumb}   className="ClassImg"/></Skeleton> :
                                                                     
-                                                                    <img src={list.listThumb}   className="ClassImg" style={{opacity:"0.7"}} />  
+                                                                    <img src={list.listThumb}   className="ClassImg" style={{opacity:"0.7"}} />
                                                                     // 有骨架
                                                             }
                                                             

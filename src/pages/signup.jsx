@@ -6,6 +6,7 @@ import axios from "axios"
 import { useTranslation } from 'react-i18next';
 import { Box,TextField ,FormHelperText} from "@mui/material";
 import '../style/signup.css'
+import LangChange from "../components/LangChange";
 const Signup=()=>{
     
 
@@ -160,7 +161,10 @@ const Signup=()=>{
         <a href="/"><img id="img_logo" src={logo} width={"150px"} alt="" /></a>
         <h1 style={{margin:"2%"}}>{t('SignUpTitle')}</h1>
         <br/>
+        
         <form id="sign_form"  onSubmit={submit_click}  >
+            <div><LangChange/></div>
+            <br/>
             <div id="email_div">
                  
                 <TextField   error={errorInput[0] != null}   label={t('SignUpEmail')} name="email"  type="text" className="email_input"  variant="outlined"  size="small" fullWidth  onChange={handleChange} onBlur={a=>{
@@ -326,9 +330,10 @@ const Signup=()=>{
             <button type="submit" id="submit_btn">{t('SignUpSignUpBTN')}</button>
             <hr/>
             <p >{t('SignUpHasTxt')}  <a href="/Login" style={{color:"blue" ,textDecoration:"underline"}}>{t('SignUpHasLink')}</a></p>
+            
         </form>
         
-    
+            
     </div>
 }
 export default Signup

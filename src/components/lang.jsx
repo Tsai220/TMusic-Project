@@ -11,6 +11,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
     },
     resources:{
         en:{
+            
             translation:{
                 //登入狀態
                 IsLogin:'Not logging',

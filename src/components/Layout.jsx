@@ -11,7 +11,9 @@ import List from "../pages/List";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
 import { useListenForState } from "./Context";
-
+import PermIdentityIcon from '@mui/icons-material/PermIdentity';
+import { Button,ListItemText } from "@mui/material";
+ 
 const Layout=()=>{
     
     const {t}=useTranslation()
@@ -96,12 +98,10 @@ const Layout=()=>{
                         </>
                             
                         || !login &&<>
-                            <Link to="/SignUp" className="linkb">
-                                {t('LayoutRigister')}
-                            </Link>
-                            <Link to="/Login" className="linkb">
-                                {t('LayoutLogin')}
-                            </Link>
+                            <Link to="/SignUp"><Button variant="outlined" sx={{background:"white",color:"blue"}}  ><ListItemText>{t('LayoutRigister')}</ListItemText></Button></Link>
+                            <> </>
+                            <Link to="/Login"><Button variant="contained" startIcon={<PermIdentityIcon/>} ><ListItemText>{t('LayoutLogin')}</ListItemText></Button></Link>
+ 
                         </>
                         }
                         

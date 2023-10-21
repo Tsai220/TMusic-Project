@@ -15,6 +15,9 @@ button:hover{
     margin: 7% 1% 0% 2%;
      
 }
+.slide_nav{
+    height:100%
+}
  
 .nav{
     height: 100vh;
@@ -67,7 +70,15 @@ button:hover{
 .linka_title:hover{
     color: rgb(255, 255, 255);
 }
-
+.slide_nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+.other_settings_nav{
+    margin: 2%;
+}
  
 /* side_nav設置以上 */
 

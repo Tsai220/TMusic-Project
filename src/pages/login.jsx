@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next"
 import logo from '../images/logo.png'
 import { Link ,useNavigate} from "react-router-dom"
-
+import LangChange from "../components/LangChange"
 import { TextField ,FormHelperText} from "@mui/material"
 import axios from "axios"
 import { useState } from "react"
@@ -160,6 +160,7 @@ const Login=()=>{
                 <button type="submit" id="submit_btn">{t('LoginBtn')}</button>
                 <hr/>
                 <p >{t('LoginNoHasTxt')}<a href="/SignUp" style={{color:"blue" ,textDecoration:"underline"}}>{t('LogingoReg')}</a></p>
+                 
             </form>
         </div>
          

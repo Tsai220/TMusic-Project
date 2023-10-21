@@ -33,12 +33,14 @@ function ListenForStateProvider({children}){
     const [userNick,SetUserNick]=useState(null)
     const [P_musicList,Set_P_musicList]=useState([])
     const [mylist,SetMylist]=useState([])
+    const [lang,Setlang]=useState("")
+    const [langType,SetLangType]=useState()
     const {t}=useTranslation();
-     
+    
    
 
     return <>
-        <ListenForState.Provider value={{navPage,SetnavPage,TopNavChange,SetTopNavChange,FrameOpen,IsFrameOpen,chooseV,SetchooseV,searchFor,SetSearchFor ,KeyWordList,SetKeyWordList,ListMusicCheck,SetListMusicCheck,Inlist,Setlist,ChooseClass,IsChooseClass,AccessToken,setAccessToken,login,IsLogin,list,AddListDiv,userNick,SetUserNick,P_musicList,Set_P_musicList,mylist,SetMylist}}>
+        <ListenForState.Provider value={{navPage,SetnavPage,TopNavChange,SetTopNavChange,FrameOpen,IsFrameOpen,chooseV,SetchooseV,searchFor,SetSearchFor ,KeyWordList,SetKeyWordList,ListMusicCheck,SetListMusicCheck,Inlist,Setlist,ChooseClass,IsChooseClass,AccessToken,setAccessToken,login,IsLogin,list,AddListDiv,userNick,SetUserNick,P_musicList,Set_P_musicList,mylist,SetMylist,lang,Setlang,langType,SetLangType}}>
             {children}
         </ListenForState.Provider>
     </>
