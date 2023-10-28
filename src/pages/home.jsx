@@ -1,42 +1,53 @@
 import "../style/home.css"
 import { v4 } from "uuid"
-
+import { useTranslation } from "react-i18next"
+import { useEffect, useState } from "react"
+import axios from "axios"
+import { useListenForState } from "../components/Context"
+let load = false;
 const Home=()=>{
-     
-    const cotent=[{
-        ImgSrc:"https://hakoniwalily.jp/cms/wp-content/uploads/2023/01/b9155f633d539d8d62a45bef29b75f59.jpg",
-        title:"Winter Vox",
-        descr:"新規書き下ろし3曲を含む計4曲収録のミニアルバム！",
-    },{
-        ImgSrc:"https://hakoniwalily.jp/cms/wp-content/uploads/2021/09/544096174f30a0e7c348938fb6427b35.jpg",
-        title:"コガネゾラ",
-        descr:"「ハコニワリリィ」待望のメジャーデビューシングル",
-    },{
-        ImgSrc:"https://hakoniwalily.jp/cms/wp-content/uploads/2021/09/544096174f30a0e7c348938fb6427b35.jpg",
-        title:"コガネゾラ",
-        descr:"「ハコニワリリィ」待望のメジャーデビューシングル",
-    },{
-        ImgSrc:"https://hakoniwalily.jp/cms/wp-content/uploads/2021/09/544096174f30a0e7c348938fb6427b35.jpg",
-        title:"コガネゾラ",
-        descr:"「ハコニワリリィ」待望のメジャーデビューシングル",
-    }]
+    
+     const {t}=useTranslation()
+
+     const {recomand,SetRecomand}=useListenForState()
+        
+
+        useEffect(()=>{
+            if (recomand==null){
+                console.log("666666666")
+                axios.post("http://127.0.0.1:8000/user/dialy/daily",{"rToken":localStorage.getItem('refresh')})
+                .then(response=>{
+         
+                    SetRecomand(response.data)
+                    
+                })
+                .catch(err=>{
+                    console.log(err)
+                })
+            }
+            
+        },[])
+    
+         
+        console.log(recomand)
     return <>
     
         <div className="container">
-            <h3>每日精選</h3>{/*分類*/ }
+            <h3>{t('HomeDailyShow')}</h3>{/*分類*/ }
             {/* .map */}
             <div className="daily_hightLight">
-                 
-                {
-                    cotent.map((a)=>{
+                
+                {recomand!=null &&
+                    recomand.map((a)=>{
                         return(
                             <div className="dailyList" key={v4()} >
-                                <img src={a.ImgSrc} width="100%" alt="" className="cd_cover"/>
-                                <p>{a.title}</p>
-                                <p>{a.descr}</p>
+                                <img src={a.videoThumbnails} width="100%" alt="" className="cd_cover"/>
+                                <p>{a.videoTitle}</p>
+                                <p>{a.channel_name}</p>
                             </div>
                         )
                     })
+                || recomand==null && <></>
                 }
                 
             </div>

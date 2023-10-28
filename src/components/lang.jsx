@@ -19,8 +19,11 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                 //分頁標籤
                 pageTitle:'TMusic- Enjoy music anytime',
 
+                //首頁home
+                HomeDailyShow:'Daily picks',
+
                 // 主頁 兼 Layout
-                LayoutHome:'Home',
+                LayoutHome:'Home ',
                 LayoutDaily:'Daily ',
                 LayoutSearch:'Search',
                 LayoutLove:'like',
@@ -92,6 +95,10 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                 IsLogin:'未登入',
                 //分頁標籤
                 pageTitle:'TMusic- 隨時享受音樂',
+
+                //首頁home
+                HomeDailyShow:'每日精選',
+
                 // 主頁 兼 Layout
                 LayoutHome:'主頁',
                 LayoutDaily:'每日精選',
@@ -161,6 +168,8 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             translation:{
                 //登入狀態
                 IsLogin:'サインインしていません',
+                //首頁home
+                HomeDailyShow:'おすすめ',
                 //分頁標籤
                 pageTitle:'TMusic- いつでも音楽を楽しむ',
                 // 主頁 兼 Layout
