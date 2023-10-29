@@ -20,20 +20,22 @@ const Layout=()=>{
     const {chooseV,AccessToken,setAccessToken,login,IsLogin,userNick,SetUserNick}=useListenForState()
     console.log(AccessToken)
     let SaveAccesssToken=localStorage.getItem('access') //可能導致錯誤
-     
+    let refresh= ""
+    let access = ""
     useEffect(()=>{
         
         if(SaveAccesssToken){
             setAccessToken(SaveAccesssToken)
-           
+            refresh= localStorage.getItem("refresh")
+            access = localStorage.getItem('access')
             // "http://127.0.0.1:8000/api/token/verify/"
             axios.post("http://127.0.0.1:8000/user/api/auth",{
                 "token": SaveAccesssToken,
-                'rToken':localStorage.getItem("refresh")
+                'rToken':refresh
             },{headers: {
                 
                 "Content-Type": "application/json",
-                'Authorization': `Bearer ${localStorage.getItem('access')}`,
+                'Authorization': `Bearer ${access}`,
                  
                 }})
             .then(response=>{
@@ -48,9 +50,11 @@ const Layout=()=>{
                 //沒傳AccessToken出去? SaveAccesssToken有
                  
                 if(err.response.statusText="Unauthorized"){
+                    refresh= localStorage.getItem("refresh")
+                    access = localStorage.getItem('access')
                     console.log("Token Expired")
                     IsLogin(false)
-                    axios.post("http://127.0.0.1:8000/api/token/refresh/",{"refresh":localStorage.getItem('refresh')  })
+                    axios.post("http://127.0.0.1:8000/api/token/refresh/",{"refresh": refresh })
                     .then(response=>{
                         console.log(response)
                         console.log(response.data.access,"新token")

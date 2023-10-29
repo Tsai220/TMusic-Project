@@ -14,7 +14,7 @@ const Home=()=>{
 
         useEffect(()=>{
             if (recomand==null){
-                console.log("666666666")
+                 
                 axios.post("http://127.0.0.1:8000/user/dialy/daily",{"rToken":localStorage.getItem('refresh')})
                 .then(response=>{
          
@@ -37,13 +37,21 @@ const Home=()=>{
             {/* .map */}
             <div className="daily_hightLight">
                 
-                {recomand!=null &&
+                {recomand!=null && 
+                    
                     recomand.map((a)=>{
+                        
                         return(
                             <div className="dailyList" key={v4()} >
-                                <img src={a.videoThumbnails} width="100%" alt="" className="cd_cover"/>
-                                <p>{a.videoTitle}</p>
-                                <p>{a.channel_name}</p>
+                                
+                                
+                                <div className="img_info_back">
+                                    <img src={a.videoThumbnails} width="100%" alt="" className="cd_cover"/>
+                                    <div className="info">{a.channel_name}</div>
+                                    <div className="info2">{a.videoTitle}</div>
+                                </div>
+                                {/* <p>{a.videoTitle}</p>
+                                <p>{a.channel_name}</p> */}
                             </div>
                         )
                     })

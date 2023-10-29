@@ -15,12 +15,38 @@
 }
 .dailyList{
     
-    border: 1px solid black;
+    
     border-radius: 5px;
     width: 20%;
      
 }
-.cd_cover{
+.img_info_back{
+    position: relative;
+     color: rgb(0, 0, 0);
+     background-color: whitesmoke;
      
 }
- 
+.img_info_back:hover{
+    cursor: pointer;
+    
+    background-color: rgb(255, 255, 255);
+     
+}
+.cd_cover{
+    background-color: gray;
+    position: absolute;
+}
+.cd_cover:hover{
+    background-color: gray;
+    position: absolute;
+    opacity: 0.4;
+}
+.info{
+    text-align: center;
+    font-weight: 900;
+}
+.info2{
+    text-align: center;
+    font-weight: 600;
+    font-size: small;
+}

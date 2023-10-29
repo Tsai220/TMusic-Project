@@ -32,7 +32,7 @@ function ListenForStateProvider({children}){
     const [list,AddListDiv]=useState(false)
     const [userNick,SetUserNick]=useState(null)
     const [P_musicList,Set_P_musicList]=useState([])
-    const [mylist,SetMylist]=useState([])
+    const [mylist,SetMylist]=useState(null)
     const [lang,Setlang]=useState("")
     const [langType,SetLangType]=useState()
     const {t}=useTranslation();
