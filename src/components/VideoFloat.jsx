@@ -7,7 +7,7 @@ import KeywordComparison from "./lyrics"
 import axios from "axios"
  
 const VideoFloat=(props )=>{
-    const {FrameOpen,IsFrameOpen,chooseV,SetchooseV,searchFor,SetSearchFor ,KeyWordList,SetKeyWordList}=useListenForState()
+    const {FrameOpen,IsFrameOpen,chooseV,SetchooseV,searchFor,SetSearchFor ,KeyWordList,SetKeyWordList,picOpen,isPicOpen}=useListenForState()
     const [loop,IsLoop]=useState(0)
     const [muted,Ismute]=useState(false)
     const [volume,SetVolume]=useState(10)
@@ -19,7 +19,7 @@ const VideoFloat=(props )=>{
 
     const CloseBtn=()=>{{
         IsFrameOpen(false)
-         
+        isPicOpen(true)
     }}
     
     const onEnd=()=>{

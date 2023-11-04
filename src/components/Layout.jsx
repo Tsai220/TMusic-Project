@@ -13,11 +13,11 @@ import axios from "axios";
 import { useListenForState } from "./Context";
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import { Button,ListItemText } from "@mui/material";
- 
+import CrossPic from "./CrossPic";
 const Layout=()=>{
     
     const {t}=useTranslation()
-    const {chooseV,AccessToken,setAccessToken,login,IsLogin,userNick,SetUserNick}=useListenForState()
+    const {chooseV,AccessToken,setAccessToken,login,IsLogin,userNick,SetUserNick,FrameOpen,IsFrameOpen,picOpen,isPicOpen}=useListenForState()
     console.log(AccessToken)
     let SaveAccesssToken=localStorage.getItem('access') //可能導致錯誤
     let refresh= ""
@@ -124,7 +124,11 @@ const Layout=()=>{
 
                 <div className="login-play_nav">
                     <h1>Sample Layout</h1>
-                     
+                    {!FrameOpen & picOpen && <CrossPic/>
+                        ||
+                    FrameOpen & !picOpen && <></>
+                    }
+                    
                 </div>
                 
             </div>
