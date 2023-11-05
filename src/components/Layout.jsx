@@ -17,11 +17,12 @@ import CrossPic from "./CrossPic";
 const Layout=()=>{
     
     const {t}=useTranslation()
-    const {chooseV,AccessToken,setAccessToken,login,IsLogin,userNick,SetUserNick,FrameOpen,IsFrameOpen,picOpen,isPicOpen}=useListenForState()
+    const {playerRef,chooseV,AccessToken,setAccessToken,login,IsLogin,userNick,SetUserNick,FrameOpen,IsFrameOpen,picOpen,isPicOpen}=useListenForState()
     console.log(AccessToken)
     let SaveAccesssToken=localStorage.getItem('access') //可能導致錯誤
     let refresh= ""
     let access = ""
+    
     useEffect(()=>{
         
         if(SaveAccesssToken){
@@ -127,6 +128,8 @@ const Layout=()=>{
                     {!FrameOpen & picOpen && <CrossPic/>
                         ||
                     FrameOpen & !picOpen && <></>
+                         
+                        
                     }
                     
                 </div>

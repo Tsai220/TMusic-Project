@@ -8,27 +8,27 @@ import axios from "axios"
  
  
 const VideoFloat=(props )=>{
-    const {prevId,setPrevId,volume,SetVolume,video_Duration,setVideo_Duration,opts,FrameOpen,IsFrameOpen,chooseV,SetchooseV,searchFor,SetSearchFor ,KeyWordList,SetKeyWordList,picOpen,isPicOpen}=useListenForState()
+    const {playerRef,prevId,setPrevId,volume,SetVolume,video_Duration,setVideo_Duration,opts,FrameOpen,IsFrameOpen,chooseV,SetchooseV,searchFor,SetSearchFor ,KeyWordList,SetKeyWordList,picOpen,isPicOpen}=useListenForState()
     const [loop,IsLoop]=useState(0)
     const [muted,Ismute]=useState(false)
     
     const [playPause,IsplayPause]=useState(true)
     const [restart,IsRestart]=useState(false)
-    const playerRef=useRef(null)
+     
      
      
 
     const CloseBtn=()=>{{
-        IsFrameOpen(false)
-        isPicOpen(true)
+        
         if(playerRef.current){//檢查是否回傳
             const player=playerRef.current.internalPlayer;
             player.getCurrentTime().then(nowTime=>{
                 setVideo_Duration(nowTime)
-                setPrevId(chooseV.videoId)
+                
             })
-             
-             
+            setPrevId(chooseV.videoId)
+            IsFrameOpen(false)
+            isPicOpen(true)
             
             
             

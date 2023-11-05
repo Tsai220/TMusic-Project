@@ -1,4 +1,4 @@
-import { createContext,useContext,useState } from "react";
+import { createContext,useContext,useRef,useState } from "react";
 import { useTranslation } from "react-i18next";
 const ListenForState=createContext()
 
@@ -41,6 +41,9 @@ function ListenForStateProvider({children}){
     const [picOpen,isPicOpen]=useState(false)
     const [volume,SetVolume]=useState(10)
     const [video_Duration,setVideo_Duration]=useState(0)
+    function b(){
+        
+    }
     const opts={
 
         playerVars:{
@@ -53,8 +56,9 @@ function ListenForStateProvider({children}){
             
         } 
     }
+    const playerRef=useRef(null)
     return <>
-        <ListenForState.Provider value={{navPage,SetnavPage,TopNavChange,SetTopNavChange,FrameOpen,IsFrameOpen,chooseV,SetchooseV,searchFor,SetSearchFor ,KeyWordList,SetKeyWordList,ListMusicCheck,SetListMusicCheck,Inlist,Setlist,ChooseClass,IsChooseClass,AccessToken,setAccessToken,login,IsLogin,list,AddListDiv,userNick,SetUserNick,P_musicList,Set_P_musicList,mylist,SetMylist,lang,Setlang,langType,SetLangType,recomand,SetRecomand,picOpen,isPicOpen,opts,video_Duration,setVideo_Duration,volume,SetVolume,prevId,setPrevId}}>
+        <ListenForState.Provider value={{navPage,SetnavPage,TopNavChange,SetTopNavChange,FrameOpen,IsFrameOpen,chooseV,SetchooseV,searchFor,SetSearchFor ,KeyWordList,SetKeyWordList,ListMusicCheck,SetListMusicCheck,Inlist,Setlist,ChooseClass,IsChooseClass,AccessToken,setAccessToken,login,IsLogin,list,AddListDiv,userNick,SetUserNick,P_musicList,Set_P_musicList,mylist,SetMylist,lang,Setlang,langType,SetLangType,recomand,SetRecomand,picOpen,isPicOpen,opts,video_Duration,setVideo_Duration,volume,SetVolume,prevId,setPrevId,playerRef}}>
             {children}
         </ListenForState.Provider>
     </>

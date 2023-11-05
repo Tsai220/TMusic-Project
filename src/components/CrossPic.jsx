@@ -5,20 +5,22 @@ import YouTube from "react-youtube";
 import NorthWestIcon from '@mui/icons-material/NorthWest';
 import { useRef } from "react";
 const CrossPic=()=>{
-    const {volume,SetVolume,setVideo_Duration,video_Duration,opts,FrameOpen,IsFrameOpen,chooseV,isPicOpen}=useListenForState()
-    const playerRef=useRef(null)
+    const {playerRef,volume,SetVolume,setVideo_Duration,video_Duration,opts,FrameOpen,IsFrameOpen,chooseV,picOpen,isPicOpen}=useListenForState()
+     
+    
     function closeBtn(){
         isPicOpen(false)
         setVideo_Duration(0)
     }
     function BackToVFloat(){
-        isPicOpen(false)
-        IsFrameOpen(true)
+        
         if(playerRef.current){//檢查是否回傳
             const player=playerRef.current.internalPlayer;
             player.getCurrentTime().then(nowTime=>{
                 setVideo_Duration(nowTime)
             })
+            isPicOpen(false)
+            IsFrameOpen(true)
              
     }}
     
