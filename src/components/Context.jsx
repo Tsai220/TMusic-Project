@@ -22,6 +22,7 @@ function ListenForStateProvider({children}){
         VideoDescribe:null,
         VideoTime:null
     })
+    const [prevId,setPrevId]=useState("")
     const [Inlist,Setlist]=useState({})
     const [ChooseClass,IsChooseClass]=useState(true)
     const [login,IsLogin]=useState(false)
@@ -38,9 +39,22 @@ function ListenForStateProvider({children}){
     const {t}=useTranslation();
     const [recomand,SetRecomand]=useState(null)
     const [picOpen,isPicOpen]=useState(false)
+    const [volume,SetVolume]=useState(10)
+    const [video_Duration,setVideo_Duration]=useState(0)
+    const opts={
 
+        playerVars:{
+            autoplay:1,
+            rel:0,
+            controls:0,
+            enablejsapi:1,
+        
+             
+            
+        } 
+    }
     return <>
-        <ListenForState.Provider value={{navPage,SetnavPage,TopNavChange,SetTopNavChange,FrameOpen,IsFrameOpen,chooseV,SetchooseV,searchFor,SetSearchFor ,KeyWordList,SetKeyWordList,ListMusicCheck,SetListMusicCheck,Inlist,Setlist,ChooseClass,IsChooseClass,AccessToken,setAccessToken,login,IsLogin,list,AddListDiv,userNick,SetUserNick,P_musicList,Set_P_musicList,mylist,SetMylist,lang,Setlang,langType,SetLangType,recomand,SetRecomand,picOpen,isPicOpen}}>
+        <ListenForState.Provider value={{navPage,SetnavPage,TopNavChange,SetTopNavChange,FrameOpen,IsFrameOpen,chooseV,SetchooseV,searchFor,SetSearchFor ,KeyWordList,SetKeyWordList,ListMusicCheck,SetListMusicCheck,Inlist,Setlist,ChooseClass,IsChooseClass,AccessToken,setAccessToken,login,IsLogin,list,AddListDiv,userNick,SetUserNick,P_musicList,Set_P_musicList,mylist,SetMylist,lang,Setlang,langType,SetLangType,recomand,SetRecomand,picOpen,isPicOpen,opts,video_Duration,setVideo_Duration,volume,SetVolume,prevId,setPrevId}}>
             {children}
         </ListenForState.Provider>
     </>

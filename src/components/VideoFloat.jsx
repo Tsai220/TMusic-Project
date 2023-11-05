@@ -2,24 +2,37 @@ import { useState,useRef ,React} from "react"
 import "../style/videoFloat.css"
 import { useListenForState } from "./Context"
 import YouTube from "react-youtube"
-import { Slider } from "@mui/material"
+import { Slider, Skeleton} from "@mui/material"
 import KeywordComparison from "./lyrics"
 import axios from "axios"
  
+ 
 const VideoFloat=(props )=>{
-    const {FrameOpen,IsFrameOpen,chooseV,SetchooseV,searchFor,SetSearchFor ,KeyWordList,SetKeyWordList,picOpen,isPicOpen}=useListenForState()
+    const {prevId,setPrevId,volume,SetVolume,video_Duration,setVideo_Duration,opts,FrameOpen,IsFrameOpen,chooseV,SetchooseV,searchFor,SetSearchFor ,KeyWordList,SetKeyWordList,picOpen,isPicOpen}=useListenForState()
     const [loop,IsLoop]=useState(0)
     const [muted,Ismute]=useState(false)
-    const [volume,SetVolume]=useState(10)
+    
     const [playPause,IsplayPause]=useState(true)
     const [restart,IsRestart]=useState(false)
     const playerRef=useRef(null)
      
-    console.log(chooseV,"asdaw")
+     
 
     const CloseBtn=()=>{{
         IsFrameOpen(false)
         isPicOpen(true)
+        if(playerRef.current){//檢查是否回傳
+            const player=playerRef.current.internalPlayer;
+            player.getCurrentTime().then(nowTime=>{
+                setVideo_Duration(nowTime)
+                setPrevId(chooseV.videoId)
+            })
+             
+             
+            
+            
+            
+        }
     }}
     
     const onEnd=()=>{
@@ -27,10 +40,18 @@ const VideoFloat=(props )=>{
     }
      
     const Onready=(event)=>{
-        if(playerRef.current){//檢查是否回傳
-            const player=playerRef.current.internalPlayer;
-            player.setVolume(10)
-            
+        if (chooseV.videoId==prevId){
+            if(playerRef.current){//檢查是否回傳
+                const player=playerRef.current.internalPlayer;
+                player.setVolume(10)
+                player.seekTo(video_Duration,true)
+            }
+        }else if(chooseV.videoId!=prevId){
+            if(playerRef.current){//檢查是否回傳
+                const player=playerRef.current.internalPlayer;
+                player.setVolume(10)
+                player.seekTo(0)
+            }
         }
     }
     const playandpause=(event)=>{
@@ -95,6 +116,7 @@ const VideoFloat=(props )=>{
                     Ismute(false)
                     player.unMute()
                     player.setVolume(now)
+                    SetVolume(now)
                 }else if(now=1){
                     Ismute(true)
                     player.mute()
@@ -146,22 +168,12 @@ const VideoFloat=(props )=>{
     };
      
 
-    const opts={
-
-        playerVars:{
-            autoplay:1,
-            rel:0,
-            controls:0,
-            enablejsapi:1,
-            loop:loop,
-            
-        } 
-    }
+    
     
     const GetSongAbout=()=>{
         axios.get("https://api.genius.com/search?q={}")
     }
-     
+    
     return <>
         {FrameOpen!=false   && 
             
@@ -174,20 +186,24 @@ const VideoFloat=(props )=>{
                     </div>
                     <div className="video_frame">
                         <div id="player_container" >
+                            <Skeleton sx={{bgcolor:"white"}} variant="rectangular" animation="wave" width="100%" height="100%" className="react-player">
+                                 
+                            </Skeleton>
                             <YouTube 
-                                videoId={chooseV.videoId } 
-                                opts={opts}
-                                iframeClassName="react-player" 
-                                ref={playerRef}
-                                onPlay={onplay}
-                                onPause={onpause}
-                                onReady={Onready}
-                                onEnd={onEnd}
-                                onPlaybackRateChange={VideoSpeed}
-                                
-                                
-                                
-                            />
+                                    videoId={chooseV.videoId } 
+                                    opts={opts}
+                                    iframeClassName="react-player" 
+                                    ref={playerRef}
+                                    onPlay={onplay}
+                                    onPause={onpause}
+                                    onReady={Onready}
+                                    onEnd={onEnd}
+                                    onPlaybackRateChange={VideoSpeed}
+                                    loading="lazy"
+                                    
+                                    
+                                />
+                            
                         </div>
                         
                         <div className="Subtitles">
