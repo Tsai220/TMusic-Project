@@ -14,6 +14,7 @@ import { useListenForState } from "./Context";
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import { Button,ListItemText } from "@mui/material";
 import CrossPic from "./CrossPic";
+import LoadingProgress from "./Loading";
 const Layout=()=>{
     
     const {t}=useTranslation()
@@ -22,7 +23,7 @@ const Layout=()=>{
     let SaveAccesssToken=localStorage.getItem('access') //可能導致錯誤
     let refresh= ""
     let access = ""
-    
+     
     useEffect(()=>{
         
         if(SaveAccesssToken){
@@ -131,6 +132,7 @@ const Layout=()=>{
                          
                         
                     }
+                    <LoadingProgress />
                     
                 </div>
                 
