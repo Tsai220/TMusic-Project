@@ -1,0 +1,25 @@
+.progress{
+    background-color: rgb(245, 245, 245);
+}
+@keyframes logo1 {
+    0%{
+        stroke-dashoffset:  500 ; 
+    }50%{
+        stroke-dashoffset:  0 ; 
+    }
+    100%{
+        stroke-dashoffset:  500 ; 
+         
+    }
+}
+
+.progress_path{
+    
+    stroke: black;
+    fill: transparent;
+    stroke-width: 2; 
+    stroke-dasharray: 500; 
+    stroke-dashoffset: 500;
+    animation: logo1 3s ease forwards infinite;
+     
+}
