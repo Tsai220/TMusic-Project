@@ -86,6 +86,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                 ListOftenSeeChannel:"Recent listening",
                 ListDelte:"Delete",
                 ListShare:'Share',
+                ListEditStateTxt:"Editing",
                  
             }
         },
@@ -162,6 +163,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                 ListOftenSeeChannel:"最近收聽",
                 ListDelte:"刪除",
                 ListShare:'分享',
+                ListEditStateTxt:"編輯中",
             }
         },
         ja:{
@@ -234,6 +236,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                 ListOftenSeeChannel:"最近聴いた",
                 ListDelte:"削除",
                 ListShare:'共有',
+                ListEditStateTxt:"編集中",
             }
         },
     }

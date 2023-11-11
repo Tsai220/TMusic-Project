@@ -2,6 +2,18 @@
 .Like_container{
     margin: 1%;
 }
+.MylistTitle{
+    display: flex;
+    gap: 1%;
+    align-items: center;
+}
+.MylistEdit{
+    color: black;
+}
+.MylistEdit:hover{
+    color: whitesmoke;
+    cursor: pointer;
+}
 .List_div{
     margin: 1%;
     width:95%;
@@ -17,8 +29,9 @@
 .Myclass{
     margin: 1%;
     display: flex;
-    width: 100%;
+    width: auto;
     gap: 15px;
+    position: relative;
 }
 .ClassDiv{
     display: flex;
@@ -39,6 +52,7 @@
     margin: auto;
     display: flex;
     border-radius:5px 5px 0 0 ;
+    position: relative;
     
     
  }
@@ -102,3 +116,57 @@
 .musicchannel_name{
     
 }
+
+@keyframes editAni {
+    0%{
+        border: 2px red ridge;
+    }50%{
+        border: 2px rgb(255, 132, 132) ridge;
+    }100%{
+        border: 2px red ridge;
+    }
+}
+@keyframes editTxt {
+    0%{
+        border: 1px red ridge;
+    }50%{
+        border: 1px rgb(255, 132, 132) ridge;
+    }100%{
+        border: 1px red ridge;
+    }
+}
+.editState{
+     
+    padding: 2%;
+    animation: editAni 3s   forwards infinite;
+}
+.editState::after{
+     content: "Editing";
+     position: absolute;
+     top: 0;
+     right: 0%;
+     color: whitesmoke;
+     width: 7%;
+     text-align: center;
+     animation: editTxt 3s   forwards infinite;
+     font-weight: 600;
+     background-color: red;
+     border-left: rgb(156, 156, 156) 1px ridge;
+     border-bottom: rgb(156, 156, 156) 1px ridge;
+     box-shadow: 0px 0.5px  gray;
+}
+.ClassImgEdit {
+    position: relative;
+  }
+  
+  .ClassImgEdit::before {
+    content: '';
+    background: url("https://i.ytimg.com/vi/Wg0FqDvks4M/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC10n3yxBEbqVk6oWx6t360-SivZw") center center / cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.5); /* 半透明黑色背景 */
+  }

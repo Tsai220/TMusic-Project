@@ -25,13 +25,13 @@ class LoadingProgress extends Component {
             const timer=setInterval(()=>{
                 if(this.state.loadingProgress<100){
                     //this.setState({ loadingProgress:this.state.loadingProgress +15})
-                     this.setState({ loadingProgress:this.state.loadingProgress + Math.floor(Math.random()*15)})
+                     this.setState({ loadingProgress:this.state.loadingProgress + Math.floor(Math.random()*20)})
                     
                 }
                 else{
                     clearInterval(timer)
                     this.setState({isLoadDone:true ,loadingProgress:100})
-                    return this.state.isLoadDone==true ,this.state.loadingProgress , console.log(this.state.isLoadDone ,this.state.loadingProgress)
+                    return this.state.isLoadDone==true ,this.state.loadingProgress  
                 }
             },500)
         }

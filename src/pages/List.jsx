@@ -2,16 +2,22 @@ import { useTranslation } from "react-i18next"
 import '../style/List.css'
 import { v4 } from "uuid"
 import ClassImg from '/src/images/music-playlist-icon-vector-33740985.jpg'
+import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 import { useEffect, useState } from "react"
 import MyList from "../components/MyList"
 import { useListenForState } from "../components/Context"
 import axios from "axios"
 import { Skeleton } from "@mui/material"
+import EditIcon from '@mui/icons-material/Edit';
+import EditOffIcon from '@mui/icons-material/EditOff';
 const List=(props)=>{
     const {t}=useTranslation()
     const {ChooseClass,IsChooseClass,Inlist,Setlist,login,IsLogin,mylist,SetMylist}=useListenForState()
      const [show,Isshow]=useState(false)
-     
+     const [myClassEle,setMyClassEle]=useState("Myclass")
+     const [ClassDiv,setClassDiv]=useState("ClassDiv")
+     const [ClassImg,setClassImg]=useState("ClassImgEdit")
+     const [edit,IsEdit]=useState(false)
     let lists=null
     const { loading = false } = props
     useEffect(()=>{
@@ -58,9 +64,35 @@ const List=(props)=>{
         Inlist.listName=list.listName
         Inlist.listId=list.listId
     }
+     
+    function editingMode(){
+         
+        if (!edit){
+            let addClass=myClassEle+" editState"
+            let addsetClassDiv=ClassDiv+" editThis"
+            setMyClassEle(addClass)
+            setClassDiv(addsetClassDiv)
+            IsEdit(true)
+        }else{
+            let addClass="Myclass"
+            let addsetClassDiv="ClassDiv"
+            setMyClassEle(addClass)
+            setClassDiv(addsetClassDiv)
+            IsEdit(false)
+        }
+        
+    }
+    function ListImgChange(event){
+        //event.target.style.cssText+= 'background-color: blue';
+         console.log(event)
+         
+    }
+    function ListImgChangeLeave(event){
+         
+    }
 
     
-    return <div className="Like_container">
+    return <div className="Like_container ">
     {/* 若無喜愛名單或未登入 不顯示 */}
     {/* 先選播放清單-> 列出喜愛列表 */}
     {login &&
@@ -68,8 +100,10 @@ const List=(props)=>{
     
         ChooseClass && 
             <>
-                <h3>{t('ListMyClass')}</h3>
-                <div className="Myclass">
+                <h3 className="MylistTitle"  >{t('ListMyClass')} 
+                    {!edit && <EditIcon fontSize="small" className="MylistEdit"  onClick={editingMode} />|| edit && <EditOffIcon className="MylistEdit" onClick={editingMode} /> }{edit && <label style={{fontSize:"small" , color:"blue"}}>{t('ListEditStateTxt')}</label>}
+                 </h3>
+                <div className={myClassEle}>
                     
                     {mylist!=null &&<>
                             
@@ -77,17 +111,18 @@ const List=(props)=>{
                             {   
                             
                             mylist.map((list)=>{
-                                 
-                                return <div key={v4()} className="ClassDiv">
+                                // ClassDiv
+                                return <div key={v4()} className={ClassDiv}  >
                                     
                                         {
                                             
                                                 list ? (
-                                                    <div key={list.listId}  onClick={()=>toMyList(list)}>
+                                                    <div key={list.listId}  onClick={()=>{!edit && toMyList(list)}}>
                                                         <div className="imgDiv">
                                                             {loading ?<Skeleton animation="wave" key={list.listId}><img src={list.listThumb}   className="ClassImg"/></Skeleton> :
+                                                                     
+                                                                    <img src={list.listThumb}   className="ClassImg" style={{opacity:"0.7  "  ,position:"relative"   }} onMouseEnter={(e)=>{e.target.className +=" ClassImgEdit" }}    />
                                                                     
-                                                                    <img src={list.listThumb}   className="ClassImg" style={{opacity:"0.7"}} />
                                                                     // 有骨架
                                                             }
                                                             

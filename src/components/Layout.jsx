@@ -104,9 +104,9 @@ const Layout=()=>{
                         </>
                             
                         || !login &&<>
-                            <Link to="/SignUp"><Button variant="outlined" sx={{background:"white",color:"blue"}}  ><ListItemText>{t('LayoutRigister')}</ListItemText></Button></Link>
+                            <Link className="linkRL"  to="/SignUp" ><Button variant="outlined" sx={{background:"white",color:"blue",fontSize:"small"  }}  ><label style={{fontWeight:"600"}}>{t('LayoutRigister')}</label></Button></Link>
                             <> </>
-                            <Link to="/Login"><Button variant="contained" startIcon={<PermIdentityIcon/>} ><ListItemText>{t('LayoutLogin')}</ListItemText></Button></Link>
+                            <Link  className="linkRL" to="/Login"><Button variant="contained"  startIcon={<PermIdentityIcon/>} ><label style={{fontWeight:"600",fontSize:"small"  }}>{t('LayoutLogin')}</label></Button></Link>
  
                         </>
                         }

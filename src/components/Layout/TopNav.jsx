@@ -7,8 +7,9 @@ const TopNav=()=>{
     const {navPage,SetnavPage,TopNavChange,SetTopNavChange}=useListenForState()
      
     return <>
-     
+        <label >
             {navPage=="/" && t('LayoutHome')|| navPage=="/Search" && t('LayoutSearch') || navPage=="/MyList" && t('LayoutMyList')}
+        </label>
          
     </>
 }

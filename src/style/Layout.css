@@ -106,7 +106,7 @@ button:hover{
     margin: 0;
 }
 .top_nav_right{
-    width: 50%;
+    width: auto;
     text-align: right;
     font-weight: 600;
      
@@ -126,6 +126,7 @@ button:hover{
     font-weight: 600;
     margin: 1%;
 }
+ 
 /* top_nav設置以上 */
 
 /* right_main設置以下 */
