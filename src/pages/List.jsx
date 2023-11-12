@@ -16,7 +16,7 @@ const List=(props)=>{
      const [show,Isshow]=useState(false)
      const [myClassEle,setMyClassEle]=useState("Myclass")
      const [ClassDiv,setClassDiv]=useState("ClassDiv")
-     const [ClassImg,setClassImg]=useState("ClassImgEdit")
+     const [imgDiv,setImgDiv]=useState("imgDiv")
      const [edit,IsEdit]=useState(false)
     let lists=null
     const { loading = false } = props
@@ -82,13 +82,18 @@ const List=(props)=>{
         }
         
     }
-    function ListImgChange(event){
-        //event.target.style.cssText+= 'background-color: blue';
-         console.log(event)
-         
+     
+
+    function ListImgChange2(event){
+        if(edit){
+                                                                                
+            event.target.style.cssText ="animation: hoverToImg 1.5s   forwards  ;"
+        }
     }
-    function ListImgChangeLeave(event){
-         
+    function ListImgChangeLeave2(event){
+        if(edit){
+            event.target.style.cssText ="opacity:0.8 ; " 
+        }
     }
 
     
@@ -118,10 +123,13 @@ const List=(props)=>{
                                             
                                                 list ? (
                                                     <div key={list.listId}  onClick={()=>{!edit && toMyList(list)}}>
-                                                        <div className="imgDiv">
-                                                            {loading ?<Skeleton animation="wave" key={list.listId}><img src={list.listThumb}   className="ClassImg"/></Skeleton> :
+                                                        <div className="imgDiv" onMouseLeave={(e)=>edit&&(e.target.classList.remove("ClassImgEdit"))  }  onMouseEnter={(e)=>edit &&(e.target.classList.add("ClassImgEdit"))   }  >
+                                                            {loading ?<Skeleton animation="wave" key={list.listId}><img src={list.listThumb}   className="ClassImg" /></Skeleton> :
                                                                      
-                                                                    <img src={list.listThumb}   className="ClassImg" style={{opacity:"0.7  "  ,position:"relative"   }} onMouseEnter={(e)=>{e.target.className +=" ClassImgEdit" }}    />
+                                                                    <img src={list.listThumb}   className="ClassImg" style={{opacity:"0.8" }} 
+                                                                    onMouseLeave={ListImgChangeLeave2}    
+                                                                        onMouseEnter={ListImgChange2}   
+                                                                    />
                                                                     
                                                                     // 有骨架
                                                             }
@@ -158,14 +166,14 @@ const List=(props)=>{
                 <h3>{t('ListOftenSeeChannel')}</h3>
                 {/* 取搜尋常點進的影片的頻道主 */}
             </>
-            || !ChooseClass &&
+        || !ChooseClass &&
             <>
                 
                 <MyList inlist={Inlist}/>
             </>
     || !login &&
     <>
-        {t('IsLogin')}
+        {t('IsLogin')}fds
     </>
         
     
