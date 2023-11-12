@@ -38,7 +38,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 15%;
+    width: 240px;
+    flex-wrap: wrap;
     border: 1px solid black;
     border-radius: 5px;
     background-color:  rgb(243, 243, 243);
@@ -69,6 +70,9 @@
     border-top: 1px solid black;
     text-align: center;
     width: 100%;
+ }
+ .ClassTitle{
+    font-size: medium;
  }
 .ClassTitle{
      
@@ -148,14 +152,17 @@
      top: 0;
      right: 0%;
      color: whitesmoke;
-     width: 7%;
+     padding: 0.3%;
+     width: auto;
      text-align: center;
      animation: editTxt 3s   forwards infinite;
+     font-size: small;
      font-weight: 600;
      background-color: red;
      border-left: rgb(156, 156, 156) 1px ridge;
      border-bottom: rgb(156, 156, 156) 1px ridge;
      box-shadow: 0px 0.5px  gray;
+     pointer-events: none;
 }
  
    
@@ -179,7 +186,7 @@
 .ClassImgEdit:hover::before{
     content: '';
     opacity: 0;
-    background: url(../images/svg/add_photo_alternate_FILL0_wght400_GRAD0_opsz24.svg) no-repeat ;
+    background: url(../images/svg/discover_tune_FILL0_wght400_GRAD0_opsz24.svg) no-repeat ;
     margin: auto;
      position: absolute;
      top: 0;

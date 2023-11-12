@@ -10,20 +10,22 @@ import axios from "axios"
 import { Skeleton } from "@mui/material"
 import EditIcon from '@mui/icons-material/Edit';
 import EditOffIcon from '@mui/icons-material/EditOff';
+import EditFrame from "../components/EditFrame";
 const List=(props)=>{
     const {t}=useTranslation()
-    const {ChooseClass,IsChooseClass,Inlist,Setlist,login,IsLogin,mylist,SetMylist}=useListenForState()
+    const {ChooseClass,IsChooseClass,Inlist,Setlist,login,IsLogin,mylist,SetMylist,editFrame,setEditFrame}=useListenForState()
      const [show,Isshow]=useState(false)
      const [myClassEle,setMyClassEle]=useState("Myclass")
      const [ClassDiv,setClassDiv]=useState("ClassDiv")
-     const [imgDiv,setImgDiv]=useState("imgDiv")
+     
      const [edit,IsEdit]=useState(false)
     let lists=null
     const { loading = false } = props
+    
     useEffect(()=>{
         //返回用戶有哪些音樂列表
        
-    
+        setEditFrame(false)
         if (mylist==null){
             const data = {rToken:localStorage.getItem("refresh")}
             
@@ -101,84 +103,86 @@ const List=(props)=>{
     {/* 若無喜愛名單或未登入 不顯示 */}
     {/* 先選播放清單-> 列出喜愛列表 */}
     {login &&
-
-    
-        ChooseClass && 
-            <>
-                <h3 className="MylistTitle"  >{t('ListMyClass')} 
-                    {!edit && <EditIcon fontSize="small" className="MylistEdit"  onClick={editingMode} />|| edit && <EditOffIcon className="MylistEdit" onClick={editingMode} /> }{edit && <label style={{fontSize:"small" , color:"blue"}}>{t('ListEditStateTxt')}</label>}
-                 </h3>
-                <div className={myClassEle}>
-                    
-                    {mylist!=null &&<>
-                            
-                             
-                            {   
-                            
-                            mylist.map((list)=>{
-                                // ClassDiv
-                                return <div key={v4()} className={ClassDiv}  >
-                                    
-                                        {
-                                            
-                                                list ? (
-                                                    <div key={list.listId}  onClick={()=>{!edit && toMyList(list)}}>
-                                                        <div className="imgDiv" onMouseLeave={(e)=>edit&&(e.target.classList.remove("ClassImgEdit"))  }  onMouseEnter={(e)=>edit &&(e.target.classList.add("ClassImgEdit"))   }  >
-                                                            {loading ?<Skeleton animation="wave" key={list.listId}><img src={list.listThumb}   className="ClassImg" /></Skeleton> :
-                                                                     
-                                                                    <img src={list.listThumb}   className="ClassImg" style={{opacity:"0.8" }} 
-                                                                    onMouseLeave={ListImgChangeLeave2}    
-                                                                        onMouseEnter={ListImgChange2}   
-                                                                    />
-                                                                    
-                                                                    // 有骨架
-                                                            }
-                                                            
-                                                            
-                                                        </div>
-                                                        <div className="titleDiv">
-                                                            <label className="ClassTitle">{list.listName}</label>
-                                                        </div>
-
-                                                    </div>
-                                                ) : (
-                                                    <Skeleton key={list.listId} animation="wave" className="ClassImg" variant="rectangular"  />
-                                                )
-                                            
-                                        }
-                                          
-                                    </div>
-                                     
+        
+            ChooseClass && 
+                <>
+                    <h3 className="MylistTitle"  >{t('ListMyClass')} 
+                        {!edit && <EditIcon fontSize="small" className="MylistEdit"  onClick={editingMode} />|| edit && <EditOffIcon className="MylistEdit" onClick={editingMode} /> }{edit && <label style={{fontSize:"small" , color:"blue"}}>{t('ListEditStateTxt')}</label>}
+                    </h3>
+                    <div className={myClassEle}>
+                        
+                        {mylist!=null &&<>
                                 
-                                 
-                            })
+                                
+                                {   
+                                
+                                mylist.map((list)=>{
+                                    // ClassDiv
+                                    return <div key={v4()} className={ClassDiv}  >
+                                        
+                                            {
+                                                
+                                                    list ? (    
+                                                    
+                                                        <div key={list.listId}  onClick={(e)=>{!edit && toMyList(list) || edit &&  setEditFrame(true), Setlist({"listName":list.listName,"listId":list.listId} )}}>
+                                                            <div className="imgDiv" onMouseLeave={(e)=>edit&&(e.target.classList.remove("ClassImgEdit"))  }  onMouseEnter={(e)=>edit &&(e.target.classList.add("ClassImgEdit"))   }  >
+                                                                {loading ?<Skeleton animation="wave" key={list.listId}><img src={list.listThumb}   className="ClassImg" /></Skeleton> :
+                                                                        
+                                                                        <img src={list.listThumb}   className="ClassImg" style={{opacity:"0.8" }} 
+                                                                        onMouseLeave={ListImgChangeLeave2}    
+                                                                            onMouseEnter={ListImgChange2}   
+                                                                        />
+                                                                        
+                                                                        // 有骨架
+                                                                }
+                                                                
+                                                                
+                                                            </div>
+                                                            <div className="titleDiv">
+                                                                <label className="ClassTitle">{list.listName}</label>
+                                                            </div>
+
+                                                        </div>
+                                                    ) : (
+                                                        <Skeleton key={list.listId} animation="wave" className="ClassImg" variant="rectangular"  />
+                                                    )
+                                                
+                                            }
+                                            
+                                        </div>
+                                        
+                                    
+                                    
+                                })
+                            }
+
+
+                                
+                            </>
+                        ||mylist==null&&<>
+                            wait...
+                        </>
                         }
 
-
-                            
-                        </>
-                    ||mylist==null&&<>
-                        wait...
-                    </>
-                    }
-
-                </div>
-                <h3>{t('ListOftenSeeChannel')}</h3>
-                {/* 取搜尋常點進的影片的頻道主 */}
-            </>
-        || !ChooseClass &&
-            <>
-                
-                <MyList inlist={Inlist}/>
-            </>
+                    </div>
+                    <h3>{t('ListOftenSeeChannel')}</h3>
+                    {/* 取搜尋常點進的影片的頻道主 */}
+                </>
+            ||!ChooseClass &&
+                <>
+                    <MyList inlist={Inlist}/>
+                </>
     || !login &&
     <>
-        {t('IsLogin')}fds
+        {t('IsLogin')} 
     </>
         
     
     } 
+        {editFrame&& <EditFrame inlist={Inlist}  />}
        
     </div>
+
+    
 }
 export default List

@@ -56,9 +56,10 @@ function ListenForStateProvider({children}){
             
         } 
     }
+    const [editFrame,setEditFrame]=useState(false)
     const playerRef=useRef(null)
     return <>
-        <ListenForState.Provider value={{navPage,SetnavPage,TopNavChange,SetTopNavChange,FrameOpen,IsFrameOpen,chooseV,SetchooseV,searchFor,SetSearchFor ,KeyWordList,SetKeyWordList,ListMusicCheck,SetListMusicCheck,Inlist,Setlist,ChooseClass,IsChooseClass,AccessToken,setAccessToken,login,IsLogin,list,AddListDiv,userNick,SetUserNick,P_musicList,Set_P_musicList,mylist,SetMylist,lang,Setlang,langType,SetLangType,recomand,SetRecomand,picOpen,isPicOpen,opts,video_Duration,setVideo_Duration,volume,SetVolume,prevId,setPrevId,playerRef}}>
+        <ListenForState.Provider value={{navPage,SetnavPage,TopNavChange,SetTopNavChange,FrameOpen,IsFrameOpen,chooseV,SetchooseV,searchFor,SetSearchFor ,KeyWordList,SetKeyWordList,ListMusicCheck,SetListMusicCheck,Inlist,Setlist,ChooseClass,IsChooseClass,AccessToken,setAccessToken,login,IsLogin,list,AddListDiv,userNick,SetUserNick,P_musicList,Set_P_musicList,mylist,SetMylist,lang,Setlang,langType,SetLangType,recomand,SetRecomand,picOpen,isPicOpen,opts,video_Duration,setVideo_Duration,volume,SetVolume,prevId,setPrevId,playerRef,editFrame,setEditFrame}}>
             {children}
         </ListenForState.Provider>
     </>
