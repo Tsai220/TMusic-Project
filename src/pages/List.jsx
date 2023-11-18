@@ -124,7 +124,7 @@ const List=(props)=>{
                                                 
                                                     list ? (    
                                                     
-                                                        <div key={list.listId}  onClick={(e)=>{!edit && toMyList(list) || edit &&  setEditFrame(true), Setlist({"listName":list.listName,"listId":list.listId} )}}>
+                                                        <div key={list.listId}  onClick={(e)=>{!edit && toMyList(list) || edit &&  setEditFrame(true) ,Setlist({"listName":list.listName,"listId":list.listId} )}}>
                                                             <div className="imgDiv" onMouseLeave={(e)=>edit&&(e.target.classList.remove("ClassImgEdit"))  }  onMouseEnter={(e)=>edit &&(e.target.classList.add("ClassImgEdit"))   }  >
                                                                 {loading ?<Skeleton animation="wave" key={list.listId}><img src={list.listThumb}   className="ClassImg" /></Skeleton> :
                                                                         
