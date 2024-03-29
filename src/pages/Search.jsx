@@ -37,7 +37,7 @@ const  Explore=()=>{
         SetSearchFor(a.target.value) //可不用?
         
     }}
-    let APIkey="AIzaSyAA4OG0ZDoNpvrkcUL5on11rCHspzlIwUI"
+    let APIkey="example api key"
     const searchAPI=(e)=>{
          
          
